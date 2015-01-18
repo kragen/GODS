@@ -8,7 +8,7 @@
 /// - These functions are low level functions written in C which were been tested thorougly and may require 
 /// a good understanding of software engineering and resource management to be able to modify them properly.
 /// 
-/// This file is part of the Game Oriented Development Software Kit.
+/// This file is part of the Game Object Data System.
 /// 2013 (c) Pablo Ariel Zorrilla Cepeda
 #ifndef _GCORE_FUNCTION_MACROS_H
 #define _GCORE_FUNCTION_MACROS_H

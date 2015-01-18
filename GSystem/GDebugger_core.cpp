@@ -1,4 +1,4 @@
-/// This file is part of the Game Oriented Development Software Kit
+/// This file is part of the Game Object Data System
 /// Copyright © 2013: Pablo Ariel Zorrilla Cepeda
 #include "GCore_constants.h"
 #include "GCore_function_macros.h"

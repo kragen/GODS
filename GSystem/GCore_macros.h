@@ -2,7 +2,7 @@
 ///
 /// Contains macros for declaring the core functions and structures of the system.
 ///
-/// This file is part of the Game Oriented Development Software Kit.
+/// This file is part of the Game Object Data System.
 /// 2012-2013 (c) Pablo Ariel Zorrilla Cepeda
 ///
 

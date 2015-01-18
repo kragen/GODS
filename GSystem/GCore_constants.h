@@ -5,7 +5,7 @@
 /// Configuration definitions:
 /// GDISABLE_STDINT: When defined, disables load of stdint.h, then typedefs the standard types.
 ///
-/// This file is part of the Game Oriented Development Software Kit
+/// This file is part of the Game Object Data System
 /// 2013 (c) Pablo Ariel Zorrilla Cepeda
 ///
 #ifndef _GCORE_CONSTANTS_H

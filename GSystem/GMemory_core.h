@@ -1,4 +1,4 @@
-/// This file is part of the Game Oriented Development Software Kit
+/// This file is part of the Game Object Data System
 /// 2011 (c) Pablo Ariel Zorrilla Cepeda
 #include "gcore_ptr.h"
 #include <stdio.h>

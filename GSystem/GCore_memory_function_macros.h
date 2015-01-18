@@ -103,8 +103,7 @@ structName* god::gacquireInterface( structName* p )			\
 		structName* p = *_p;																				\
 		(*_p) = 0;																							\
 																											\
-		typedef void(*funcType)(structName**);																\
-		if( (p)->__pfreeData != (funcType)gfreeData )														\
+		if( (p)->__pfreeData != gfreeData )																	\
 		{																									\
 			(p)->__pfreeData(&p);																			\
 			return;																							\
@@ -153,8 +152,7 @@ structName* god::gacquireInterface( structName* p )			\
 		structName* p = *_p;										\
 		(*_p) = 0;													\
 																	\
-		typedef void(*funcType)(structName**);						\
-		if( (p)->__pfreeInterface != (funcType)gfreeInterface )		\
+		if( (p)->__pfreeInterface != gfreeInterface )				\
 		{															\
 			(p)->__pfreeInterface(&p);								\
 			return;													\

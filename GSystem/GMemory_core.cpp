@@ -1,5 +1,5 @@
 
-/// This file is part of the Game Oriented Development Software Kit
+/// This file is part of the Game Object Data System
 /// Copyright © 2011: Pablo Ariel Zorrilla Cepeda
 #include "GMemory_core.h"
 #include "GCore_function_macros.h"
