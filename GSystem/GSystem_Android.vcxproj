@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="NsightTegraProject">
+    <NsightTegraProjectRevisionNumber>9</NsightTegraProjectRevisionNumber>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Tegra-Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Tegra-Android">
+      <Configuration>Release</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GBaseBuffer.cpp" />
+    <ClCompile Include="GCore_nativetype.cpp" />
+    <ClCompile Include="GCore_printf.cpp" />
+    <ClCompile Include="GDebugger_core.cpp" />
+    <ClCompile Include="GFile_core.cpp" />
+    <ClCompile Include="GMemory_core.cpp" />
+    <ClCompile Include="GMemory_core_createBuffer.cpp" />
+    <ClCompile Include="gstd.cpp" />
+    <ClCompile Include="GSystem_Android.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="garray.h" />
+    <ClInclude Include="GBaseBuffer.h" />
+    <ClInclude Include="gbaselist.h" />
+    <ClInclude Include="gbase_ptr.h" />
+    <ClInclude Include="GCore_constants.h" />
+    <ClInclude Include="GCore_function_macros.h" />
+    <ClInclude Include="GCore_io_function_macros.h" />
+    <ClInclude Include="GCore_macros.h" />
+    <ClInclude Include="GCore_memory_function_macros.h" />
+    <ClInclude Include="GCore_nativetype.h" />
+    <ClInclude Include="GCore_printf.h" />
+    <ClInclude Include="gcore_ptr.h" />
+    <ClInclude Include="GDebugger_core.h" />
+    <ClInclude Include="GFile_core.h" />
+    <ClInclude Include="ginterface_ptr.h" />
+    <ClInclude Include="glist.h" />
+    <ClInclude Include="GMemory_core.h" />
+    <ClInclude Include="gstd.h" />
+    <ClInclude Include="IGMemoryManager.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1B19CB1E-9006-4EA4-8539-2E7ACB1F2E6A}</ProjectGuid>
+    <RootNamespace>GSystem_Android</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidTargetAPI>android-15</AndroidTargetAPI>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidTargetAPI>android-15</AndroidTargetAPI>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <OutDir>..\..\$(Platform).$(Configuration)\</OutDir>
+    <IntDir>..\..\obj\$(Platform).$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <OutDir>..\..\$(Platform).$(Configuration)\</OutDir>
+    <IntDir>..\..\obj\$(Platform).$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <ClCompile>
+      <CppLanguageStandard>gnu++11</CppLanguageStandard>
+      <AdditionalOptions>-traditional-cpp %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <ClCompile>
+      <CppLanguageStandard>gnu++11</CppLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

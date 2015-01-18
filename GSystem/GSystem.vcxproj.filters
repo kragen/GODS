@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Private macros">
+      <UniqueIdentifier>{84bc18c3-2e7e-4dd4-a92f-bdb15d922003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GCore_ptr">
+      <UniqueIdentifier>{ca752c5d-3b54-478b-b91c-0e0619472739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GCore_printf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GDebugger_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GMemory_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GCore_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GCore_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GCore_io_function_macros.h">
+      <Filter>Private macros</Filter>
+    </ClInclude>
+    <ClInclude Include="GCore_function_macros.h">
+      <Filter>Private macros</Filter>
+    </ClInclude>
+    <ClInclude Include="GCore_memory_function_macros.h">
+      <Filter>Private macros</Filter>
+    </ClInclude>
+    <ClInclude Include="GBaseBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gcore_ptr.h">
+      <Filter>GCore_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="glist.h">
+      <Filter>GCore_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="gbaselist.h">
+      <Filter>GCore_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="gbase_ptr.h">
+      <Filter>GCore_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="ginterface_ptr.h">
+      <Filter>GCore_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="GCore_nativetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gstd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="garray.h">
+      <Filter>GCore_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="IGMemoryManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GDebugger_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GMemory_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GMemory_core_createBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GBaseBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GCore_printf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GCore_nativetype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gstd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

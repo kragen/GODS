@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GSystem_Android.cpp" />
+    <ClCompile Include="GBaseBuffer.cpp" />
+    <ClCompile Include="GCore_nativetype.cpp" />
+    <ClCompile Include="GCore_printf.cpp" />
+    <ClCompile Include="GDebugger_core.cpp" />
+    <ClCompile Include="GFile_core.cpp" />
+    <ClCompile Include="GMemory_core.cpp" />
+    <ClCompile Include="GMemory_core_createBuffer.cpp" />
+    <ClCompile Include="gstd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="garray.h" />
+    <ClInclude Include="GBaseBuffer.h" />
+    <ClInclude Include="gbaselist.h" />
+    <ClInclude Include="gbase_ptr.h" />
+    <ClInclude Include="GCore_constants.h" />
+    <ClInclude Include="GCore_function_macros.h" />
+    <ClInclude Include="GCore_io_function_macros.h" />
+    <ClInclude Include="GCore_macros.h" />
+    <ClInclude Include="GCore_memory_function_macros.h" />
+    <ClInclude Include="GCore_nativetype.h" />
+    <ClInclude Include="GCore_printf.h" />
+    <ClInclude Include="gcore_ptr.h" />
+    <ClInclude Include="GDebugger_core.h" />
+    <ClInclude Include="GFile_core.h" />
+    <ClInclude Include="ginterface_ptr.h" />
+    <ClInclude Include="glist.h" />
+    <ClInclude Include="GMemory_core.h" />
+    <ClInclude Include="gstd.h" />
+    <ClInclude Include="IGMemoryManager.h" />
+  </ItemGroup>
+</Project>
