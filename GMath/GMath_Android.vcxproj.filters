@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GMath_Android.cpp" />
+    <ClCompile Include="GMatrix4.cpp" />
+    <ClCompile Include="GObb.cpp" />
+    <ClCompile Include="GPlane.cpp" />
+    <ClCompile Include="GQuaternion.cpp" />
+    <ClCompile Include="GRay.cpp" />
+    <ClCompile Include="GVector_core.cpp" />
+    <ClCompile Include="GVector_core_matrix.cpp" />
+    <ClCompile Include="GVector2.cpp" />
+    <ClCompile Include="GVector3.cpp" />
+    <ClCompile Include="GVector4.cpp" />
+    <ClCompile Include="GAabb.cpp" />
+    <ClCompile Include="GMath_base.cpp" />
+    <ClCompile Include="GMatrix2.cpp" />
+    <ClCompile Include="GMatrix3.cpp" />
+    <ClCompile Include="GMatrix3x2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GMath_base.h" />
+    <ClInclude Include="GVector_core.h" />
+    <ClInclude Include="GVector_object.h" />
+  </ItemGroup>
+</Project>
