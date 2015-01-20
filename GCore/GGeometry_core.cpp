@@ -18,18 +18,18 @@
 using namespace god;
 
 
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( BUFFERSLICE, BufferSlice );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( RANGE, Range );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( RECTANGLE, Rectangle );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( RECTANGLEL, RectangleL );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( POINTL, PointL );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( POINTF, PointF );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( CUBOID, Cuboid );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( PIVOTFRAME, PivotFrame );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( BOUNDINGVOLUME, BoundingVolume );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( TRANSFORM, Transform );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( BUFFERSLICE, BufferSlice );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( RANGE, Range );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( RECTANGLE, Rectangle );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( RECTANGLEL, RectangleL );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( POINTL, PointL );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( POINTF, PointF );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( CUBOID, Cuboid );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( PIVOTFRAME, PivotFrame );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( BOUNDINGVOLUME, BoundingVolume );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( TRANSFORM, Transform );
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RANGE),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RANGE),
 	"Offset..................: %i\n"
 	"Count...................: %i\n"
 	, (int)in_CoreInstance->Offset
@@ -37,7 +37,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RANGE),
 	);
 
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BUFFERSLICE),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BUFFERSLICE),
 	"IndexOffset..................: %i\n"
 	"ElementOffset................: %i\n"
 	"IndexCount...................: %i\n"
@@ -50,7 +50,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BUFFERSLICE),
 
 //-----------
 //------------------------------------------------------------------------
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(TRANSFORM),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(TRANSFORM),
 	"Matrix........................:\n"
 	"(%f, %f, %f, %f)\n"
 	"(%f, %f, %f, %f)\n"
@@ -72,7 +72,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(TRANSFORM),
 	, in_CoreInstance->MatrixInverse._41	, in_CoreInstance->MatrixInverse._42	, in_CoreInstance->MatrixInverse._43	, in_CoreInstance->MatrixInverse._44
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(PIVOTFRAME),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(PIVOTFRAME),
 	"fTime.........................: %f\n"
 	"vScale........................: (x=%f, y=%f, z=%f)\n"
 	"qOrientation..................: (x=%f, y=%f, z=%f, w=%f)\n"
@@ -83,7 +83,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(PIVOTFRAME),
 	, in_CoreInstance->Position.x		, in_CoreInstance->Position.y		, in_CoreInstance->Position.z 
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BOUNDINGVOLUME),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BOUNDINGVOLUME),
 	"nType.........................: 0x%X\n"
 	"vCenter.......................: (x=%f, y=%f, z=%f)\n"
 	"fRadius.......................: %f\n"
@@ -96,33 +96,33 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BOUNDINGVOLUME),
 	, in_CoreInstance->vMax.x , in_CoreInstance->vMax.y , in_CoreInstance->vMax.z				
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(CUBOID),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(CUBOID),
 	"vCenter.......................: (x=%f, y=%f, z=%f)\n"
 	"vHalfSizes....................: (x=%f, y=%f, z=%f)"
 	, in_CoreInstance->vCenter.x, in_CoreInstance->vCenter.y, in_CoreInstance->vCenter.z
 	, in_CoreInstance->vHalfSizes.x, in_CoreInstance->vHalfSizes.y, in_CoreInstance->vHalfSizes.z				
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RECTANGLE),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RECTANGLE),
 	"vOffset.......................: (x=%f, y=%f)\n"
 	"vSize.........................: (x=%f, y=%f)",
 	in_CoreInstance->vOffset.x,	in_CoreInstance->vOffset.y,
 	in_CoreInstance->vSize.x, in_CoreInstance->vSize.y
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RECTANGLEL),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(RECTANGLEL),
 	"Offset........................: (x=%i, y=%i)\n"
 	"Size..........................: (x=%i, y=%i)",
 	in_CoreInstance->OffsetX, in_CoreInstance->OffsetY,
 	in_CoreInstance->SizeX, in_CoreInstance->SizeY
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(POINTL),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(POINTL),
 	"Data........................: (x=%i, y=%i)\n",
 	in_CoreInstance->x, in_CoreInstance->y
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(POINTF),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(POINTF),
 	"Data........................: (x=%f, y=%f)\n",
 	in_CoreInstance->x, in_CoreInstance->y
 	);

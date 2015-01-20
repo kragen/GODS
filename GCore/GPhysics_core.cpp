@@ -17,12 +17,12 @@
 
 using namespace god;
 
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( MASS2D, Mass2D );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( FORCE2D, Force2D );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( MASS3D, Mass3D );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( FORCE3D, Force3D );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( MASS2D, Mass2D );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( FORCE2D, Force2D );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( MASS3D, Mass3D );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( FORCE3D, Force3D );
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(FORCE3D),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(FORCE3D),
 	"Acceleration.................: [%f, %f, %f]\n"
 	"Velocity.....................: [%f, %f, %f]\n"
 	"Rotation.....................: [%f, %f, %f]"
@@ -31,7 +31,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(FORCE3D),
 	, in_CoreInstance->Rotation.x, in_CoreInstance->Rotation.y, in_CoreInstance->Rotation.z
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MASS3D),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MASS3D),
 	"InverseMass...................: %f\n"
 	"LinearDamping.................: %f\n"
 	"AngularDamping................: %f\n"
@@ -47,7 +47,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MASS3D),
 	, in_CoreInstance->InverseAngularMassTensor._31, in_CoreInstance->InverseAngularMassTensor._32, in_CoreInstance->InverseAngularMassTensor._33
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(FORCE2D),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(FORCE2D),
 	"Acceleration..................: [%f, %f]\n"
 	"Velocity......................: [%f, %f]\n"
 	"Rotation......................: %f"
@@ -56,7 +56,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(FORCE2D),
 	, in_CoreInstance->Rotation
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MASS2D),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MASS2D),
 	"InverseMass...................: %f\n"
 	"LinearDamping.................: %f\n"
 	"AngularDamping................: %f\n"

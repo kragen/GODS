@@ -20,8 +20,8 @@ using namespace god;
 #define max( a, b ) ( ((a)<(b)) ? (b) : (a) )
 #endif 
 
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( LIGHT, Light );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( MATERIAL, Material );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( LIGHT, Light );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( MATERIAL, Material );
 
 #ifndef min
 #define min( a, b ) ( ((a)>(b)) ? (b) : (a) )
@@ -77,7 +77,7 @@ error_t god::addDiffuseVertexColor( const GVECTOR3& lightNormalW, float fDistanc
 	return 0;
 };
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MATERIAL),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MATERIAL),
 	"fTime.........................: %f\n"
 	"Diffuse.......................: r=%f, g=%f, b=%f, a=%f\n"
 	"Ambient.......................: r=%f, g=%f, b=%f, a=%f\n"
@@ -92,7 +92,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(MATERIAL),
 	, in_CoreInstance->SpecularPower
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(LIGHT),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(LIGHT),
 	"Ambient.......................: r=%f, g=%f, b=%f, a=%f\n"
 	"Diffuse.......................: r=%f, g=%f, b=%f, a=%f\n"
 	"Specular......................: r=%f, g=%f, b=%f, a=%f\n"

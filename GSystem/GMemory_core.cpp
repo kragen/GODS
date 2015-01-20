@@ -544,7 +544,7 @@ uint32_t god::memSerializeData( GODS(BUFFER) const* in_DefinitionList, uint32_t 
 	return byteIndex;
 };
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BUFFER),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BUFFER),
 	"DataFormat....................: 0x%X\n"
 	"Usage.........................: 0x%X\n"
 	"nElementCount.................: %u\n"

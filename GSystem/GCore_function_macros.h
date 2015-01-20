@@ -27,27 +27,27 @@
 //#define GCORE_INTERFACE_DATA_SIZE(structName) (sizeof(structName)-((GCORE_STRUCT_FOOTER_SIZE)+(GCORE_STRUCT_HEADER_SIZE)))
 
 
-#define __GCORE_STRUCT_INIT_STATIC_MEMBERS(TOKEN, Token)																			\
-	const god::cue_t	__GODS(TOKEN)::__kCue					= #TOKEN;															\
-	const uint32_t		__GODS(TOKEN)::__kDataSize				= sizeof(S##Token);													\
-	const uint8_t		__GODS(TOKEN)::__kCueLen				= (uint8_t)strlen(#TOKEN);											\
-	const uint8_t		__GODS(TOKEN)::__kDataOffset			= GCORE_STRUCT_HEADER_SIZE;											\
-	const uint8_t		__GODS(TOKEN)::__kDataTurbo				=	(uint8_t) (														\
-																	( 0 == (sizeof(S##Token) % 8) ) ? 8 :							\
-																	( 0 == (sizeof(S##Token) % 4) ) ? 4 : 							\
-																	( 0 == (sizeof(S##Token) % 2) ) ? 2 : 							\
-																	1 );															\
-	const uint8_t		__GODS(TOKEN)::__kDataReserved			=	(uint8_t) (														\
-																	( 0 == (sizeof(S##Token) % 8)) ? sizeof(S##Token) / 8 :			\
-																	( 0 == (sizeof(S##Token) % 4)) ? sizeof(S##Token) / 4 :			\
-																	( 0 == (sizeof(S##Token) % 2)) ? sizeof(S##Token) / 2 :			\
-																	sizeof(S##Token) );												\
-	template<> GODS(TOKEN)	const 			gbaselist_safe<GODS(TOKEN)>::INVALID	= 0;												\
-	template<> GODS(TOKEN)					gbaselist_safe<GODS(TOKEN)>::_INVALID	= 0;														\
-	template<> GODS(TOKEN)					gbase_ptr<GODS(TOKEN)>::INVALID		= 0;														\
+#define __GCORE_STRUCT_INIT_STATIC_MEMBERS(TOKEN, Token)																	\
+	const god::cue_t	__GODS(TOKEN)::__kCue					= #TOKEN;													\
+	const uint32_t		__GODS(TOKEN)::__kDataSize				= sizeof(S##Token);											\
+	const uint8_t		__GODS(TOKEN)::__kCueLen				= (uint8_t)strlen(#TOKEN);									\
+	const uint8_t		__GODS(TOKEN)::__kDataOffset			= GCORE_STRUCT_HEADER_SIZE;									\
+	const uint8_t		__GODS(TOKEN)::__kDataTurbo				=	(uint8_t) (												\
+																	( 0 == (sizeof(S##Token) % 8) ) ? 8 :					\
+																	( 0 == (sizeof(S##Token) % 4) ) ? 4 : 					\
+																	( 0 == (sizeof(S##Token) % 2) ) ? 2 : 					\
+																	1 );													\
+	const uint8_t		__GODS(TOKEN)::__kDataReserved			=	(uint8_t) (												\
+																	( 0 == (sizeof(S##Token) % 8)) ? sizeof(S##Token) / 8 :	\
+																	( 0 == (sizeof(S##Token) % 4)) ? sizeof(S##Token) / 4 :	\
+																	( 0 == (sizeof(S##Token) % 2)) ? sizeof(S##Token) / 2 :	\
+																	sizeof(S##Token) );										\
+	template<> GODS(TOKEN)	const 			gbaselist_safe<GODS(TOKEN)>::INVALID	= 0;									\
+	template<> GODS(TOKEN)					gbaselist_safe<GODS(TOKEN)>::_INVALID	= 0;									\
+	template<> GODS(TOKEN)					gbase_ptr<GODS(TOKEN)>::INVALID		= 0;
 
 //
-#define __GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD(TOKEN,Token)		\
+#define GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD(TOKEN,Token)			\
 	__GCORE_STRUCT_INIT_STATIC_MEMBERS(TOKEN,Token);								\
 	__GDEFINE_CREATEDATA_FUNCTION_NO_MEMBER_INIT(__GODS(TOKEN),Token);				\
 	__GDEFINE_FREEDATA_FUNCTION_NO_MEMBER_CLEANUP(__GODS(TOKEN),Token);				\
@@ -60,7 +60,7 @@
 	__GDEFINE_FREEARRAY_FUNCTION(__GODS(TOKEN));									\
 	__GDEFINE_AMIOWNING_DATA(__GODS(TOKEN));
 
-#define __GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD(TOKEN,Token)			\
+#define GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD(TOKEN,Token)			\
 	__GCORE_STRUCT_INIT_STATIC_MEMBERS(TOKEN,Token);								\
 	__GDEFINE_CREATEDATA_FUNCTION_MEMBER_INIT(__GODS(TOKEN),Token);					\
 	__GDEFINE_FREEDATA_FUNCTION_NO_MEMBER_CLEANUP(__GODS(TOKEN),Token);				\
@@ -79,7 +79,7 @@ static const char* STRING_BOOL_FALSE = "false";
 static const wchar_t* WSTRING_BOOL_TRUE = L"true";
 static const wchar_t* WSTRING_BOOL_FALSE = L"false";
 
-#define G_CSTRING_FROM_BOOL(b) ( (b) ? (STRING_BOOL_TRUE)		: (STRING_BOOL_FALSE)	)
+#define G_CSTRING_FROM_BOOL(b) ( (b) ? (STRING_BOOL_TRUE)	: (STRING_BOOL_FALSE)	)
 #define G_WSTRING_FROM_BOOL(b) ( (b) ? (WSTRING_BOOL_TRUE)	: (WSTRING_BOOL_FALSE)	)
 
 

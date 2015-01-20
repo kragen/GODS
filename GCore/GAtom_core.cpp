@@ -9,11 +9,11 @@
 
 using namespace god;
 
-__GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD( ATOM, Atom );
-__GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD( AMINOACID, Aminoacid );
-__GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD( BOND, Bond );
+GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD( ATOM, Atom );
+GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD( AMINOACID, Aminoacid );
+GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD( BOND, Bond );
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ATOM),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ATOM),
 	"AtomicNumber..................: %u\n"
 	"Symbol[4].....................: %s\n"
 	"Name[64]......................: %s\n"
@@ -42,7 +42,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ATOM),
 	, in_CoreInstance->Abundance
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(AMINOACID),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(AMINOACID),
 	"Type..........................: %u\n"
 	"Letter........................: %c\n"
 	"AtomCount.....................: %u\n"
@@ -61,7 +61,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(AMINOACID),
 	, in_CoreInstance->CommonName
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BOND),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(BOND),
 	"Type..........................: %u\n"
 	"SectionA......................: %u\n"
 	"IndexA........................: %u\n"

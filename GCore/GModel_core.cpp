@@ -17,9 +17,9 @@
 
 using namespace god;
 
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( TRIANGLE, Triangle );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( TRIANGLE, Triangle );
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(TRIANGLE),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(TRIANGLE),
 	//"VertexIndices[3].............: [%i, %i, %i]\n"
 	//"TriangleTextureIndices[3]....: [%i, %i, %i]\n"
 	"TextureIndex.................: %i\n"

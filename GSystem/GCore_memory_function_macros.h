@@ -423,7 +423,7 @@ int32_t god::gcompareData( const structName* p1, const structName* p2 )			\
 };
 #if defined(ANDROID)
 	//---------------------
-	#define __GDEFINE_PRINTINFOSTRING_FUNCTIONA( _structName, format, ... )		\
+	#define GDEFINE_PRINTINFOSTRING_FUNCTIONA( _structName, format, ... )		\
 		void god::printInfoString( const _structName* in_CoreInstance )			\
 		{																		\
 			if( 0 == in_CoreInstance )											\
@@ -463,7 +463,7 @@ int32_t god::gcompareData( const structName* p1, const structName* p2 )			\
 		};																	
 #else
 	//---------------------
-	#define __GDEFINE_PRINTINFOSTRING_FUNCTIONA( _structName, format, ... )		\
+	#define GDEFINE_PRINTINFOSTRING_FUNCTIONA( _structName, format, ... )		\
 		void god::printInfoString( const _structName* in_CoreInstance )			\
 		{																		\
 			if( 0 == in_CoreInstance )											\
@@ -503,7 +503,7 @@ int32_t god::gcompareData( const structName* p1, const structName* p2 )			\
 			mbstowcs_s( &n, pOutputBuffer, nBufferSize, buffer, 2048 );			\
 		};		
 
-#define __GDEFINE_PRINTINFOSTRING_FUNCTIONW( _structName, format, ... )				\
+#define GDEFINE_PRINTINFOSTRING_FUNCTIONW( _structName, format, ... )				\
 	void god::printInfoString( const _structName* in_CoreInstance )					\
 	{																				\
 		if( 0 == in_CoreInstance )													\

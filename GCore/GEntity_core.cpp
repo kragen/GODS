@@ -15,10 +15,10 @@
 
 using namespace god;
 
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( ENTITY, Entity );
-__GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( ANIMATION, Animation );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( ENTITY, Entity );
+GDEFINE_CORE_FUNCTIONS_NO_MEMBER_INIT_CLEANUP_SAVELOAD( ANIMATION, Animation );
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ENTITY),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ENTITY),
 	"Type.........................: 0x%X\n"
 	//"Family.......................: 0x%X\n"
 	"State........................: %i\n"
@@ -39,7 +39,7 @@ __GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ENTITY),
 	, (int)in_CoreInstance->AnimationMode
 	);
 
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ANIMATION),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ANIMATION),
 	"TimeStart................: %f\n"
 	"TimeEnd..................: %f\n"
 	"Speed....................: %f\n"

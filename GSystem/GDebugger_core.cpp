@@ -26,7 +26,7 @@ static uint32_t				__g_nStackMethodArraySize	= 0;
 static GODS(METHODDEBUG)*	__g_lstStackMethod			= 0;
 static bool					__g_bEnableGDebugger		= false;
 
-__GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD(METHODDEBUG,MethodDebug);
+GDEFINE_CORE_FUNCTIONS_MEMBER_INIT_CLEANUP_SAVELOAD(METHODDEBUG,MethodDebug);
 
 struct __CStackMethodDestructor
 {
@@ -299,7 +299,7 @@ void god::printInfoString( const __GODS(METHODDEBUG)* MethodData )
 	}
 };
 #elif defined(WIN32) || defined(_WIN32)
-__GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(METHODDEBUG),
+GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(METHODDEBUG),
 	"ClassName.....................: %s\n"
 	"MethodName....................: %s()\n"
 	"InstanceAddress...............: 0x%p\n"
