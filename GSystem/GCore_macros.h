@@ -112,7 +112,7 @@
 	void gcreateInterface( __structName** inout_p##Token );								\
 	void gfreeInterface( __structName** inout_p##Token );								\
 	void gfreeInterface( __structName** inout_p##Token, uint32_t* n##Token##Count );	\
-	_structName* gacquireInterface( __structName* in_##Token );							\
+	__structName* gacquireInterface( __structName* in_##Token );						\
 	void gfreeInterfaceArray( __structName** in_lst##Token, uint32_t* nElementCount );
 //
 #define __GDECLARE_ALL_INTERFACE_FUNCTIONS(TOKEN, Token)		\
