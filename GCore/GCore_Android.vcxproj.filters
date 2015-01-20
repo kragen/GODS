@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GCore_Android.cpp" />
+    <ClCompile Include="GAtom_core.cpp" />
+    <ClCompile Include="GColor.cpp" />
+    <ClCompile Include="GColor_core.cpp" />
+    <ClCompile Include="GColor24.cpp" />
+    <ClCompile Include="GColor32.cpp" />
+    <ClCompile Include="GCommand_core.cpp" />
+    <ClCompile Include="GDrivers_core.cpp" />
+    <ClCompile Include="GEntity_core.cpp" />
+    <ClCompile Include="GGeometry_core.cpp" />
+    <ClCompile Include="GGraphics_core.cpp" />
+    <ClCompile Include="GModel_core.cpp" />
+    <ClCompile Include="GPhysics_core.cpp" />
+    <ClCompile Include="GPrimitive_core.cpp" />
+    <ClCompile Include="GTerrain_core.cpp" />
+    <ClCompile Include="GTerrain_core_geometry.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GTerrain_core_private.h" />
+    <ClInclude Include="GTerrain_function_macros.h" />
+    <ClInclude Include="IGAudio.h" />
+    <ClInclude Include="IGInput.h" />
+    <ClInclude Include="IGNetwork.h" />
+    <ClInclude Include="IGPPU.h" />
+    <ClInclude Include="IGPrivate.h" />
+    <ClInclude Include="IGStorage.h" />
+    <ClInclude Include="IGVideo.h" />
+    <ClInclude Include="GAtom_core.h" />
+    <ClInclude Include="GColor_core.h" />
+    <ClInclude Include="GColor_object.h" />
+    <ClInclude Include="GCommand_core.h" />
+    <ClInclude Include="GCore_command_table.h" />
+    <ClInclude Include="GDrivers_core.h" />
+    <ClInclude Include="GEntity_core.h" />
+    <ClInclude Include="GGeometry_core.h" />
+    <ClInclude Include="GGraphics_core.h" />
+    <ClInclude Include="GModel_core.h" />
+    <ClInclude Include="GPhysics_core.h" />
+    <ClInclude Include="GPrimitive_core.h" />
+    <ClInclude Include="GTerrain_core.h" />
+  </ItemGroup>
+</Project>

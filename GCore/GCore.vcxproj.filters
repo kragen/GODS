@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="GColor">
+      <UniqueIdentifier>{90377a33-651b-4cf2-9ac9-0b27cf7de9e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private macros">
+      <UniqueIdentifier>{7ae8de8f-ecc1-472c-98af-858e4ee6a677}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GPhysics_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GPrimitive_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GColor_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GEntity_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GGeometry_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GGraphics_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GTerrain_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GTerrain_core_geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GColor32.cpp">
+      <Filter>GColor</Filter>
+    </ClCompile>
+    <ClCompile Include="GColor.cpp">
+      <Filter>GColor</Filter>
+    </ClCompile>
+    <ClCompile Include="GColor24.cpp">
+      <Filter>GColor</Filter>
+    </ClCompile>
+    <ClCompile Include="GModel_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GAtom_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GText_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GEntity_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GGeometry_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GGraphics_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPhysics_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPrimitive_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GTerrain_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GTerrain_core_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GColor_object.h">
+      <Filter>GColor</Filter>
+    </ClInclude>
+    <ClInclude Include="GColor_core.h">
+      <Filter>GColor</Filter>
+    </ClInclude>
+    <ClInclude Include="GTerrain_function_macros.h">
+      <Filter>Private macros</Filter>
+    </ClInclude>
+    <ClInclude Include="GModel_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GAtom_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GText_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
