@@ -274,7 +274,7 @@ uint32_t god::memSerializeData(structName * const *,uint32_t ,void *)			\
 		return i;																							\
 	};
 
-#elif defined( _WIN32 ) || defined(WIN32)
+#else // Windows or Linux (?  Will this work?)
 	#define __GDEFINE_FILEWRITE_FUNCTION_NO_MEMBER_POINTERS( structName )																		\
 	uint32_t god::fileWriteData( structName* const* in_DefinitionList, uint32_t nDefinitionCount, FILE* out_fp, structName* in_DefaultData )	\
 	{																														\
@@ -430,7 +430,6 @@ uint32_t god::memSerializeData(structName * const *,uint32_t ,void *)			\
 		debug_printf("%i " #structName " instances read from file, %i referenced.", i, nSkipped);			\
 		return i;																							\
 	};
-#else
 #endif // WIN32
 
 //--------------------------------------------- Serialization function macros

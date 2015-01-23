@@ -1,9 +1,12 @@
 /// This file is part of the Game Object Data System
 /// Copyright © 2013: Pablo Ariel Zorrilla Cepeda
+#include <stdlib.h>
+
 #include "GCore_constants.h"
 #include "GCore_function_macros.h"
 
-#if defined(ANDROID)
+#if defined(ANDROID) || defined(__linux__)
+#include <time.h>
 #elif defined(_WIN32) || defined(WIN32)
 #include <windows.h>
 #endif
@@ -60,7 +63,7 @@ struct __CStackMethodDestructor
 //	QueryPerformanceCounter( (LARGE_INTEGER*)&__g_nStartTime );
 //	__g_fSecondsPerCount = 1.0/__g_nCountsPerSecond;
 //#else
-//	//throw("Not implemented\n");
+//	//throw("Not implemented\n");  (maybe use clock(2)?)
 //#endif
 //
 //	// __g_nStackMethodIndex		= 0;
@@ -94,11 +97,9 @@ CGDbgMethod::CGDbgMethod( const void* pInstanceAddress, const char* wszClassName
 		QueryPerformanceFrequency( (LARGE_INTEGER*)&__g_nCountsPerSecond );
 		QueryPerformanceCounter( (LARGE_INTEGER*)&__g_nStartTime );
 		__g_fSecondsPerCount = 1.0/__g_nCountsPerSecond;
-#	elif defined( ANDROID )
-		__g_nCountsPerSecond	= 33000000;
+#	elif defined(__linux__) || defined( ANDROID )
+                __g_nCountsPerSecond = CLOCKS_PER_SEC;
 		__g_fSecondsPerCount = 1.0/__g_nCountsPerSecond;
-#	else
-//		throw("Not implemented\n");
 #	endif	
 	}
 //	__g_nStackMethodIndex++;
@@ -108,12 +109,12 @@ CGDbgMethod::CGDbgMethod( const void* pInstanceAddress, const char* wszClassName
 	if( wszClassName )
 	{
 		char* dst = &m_MethodData->ClassName[0];
-		while( *dst++ = *wszClassName++ );
+		while( (*dst++ = *wszClassName++) != 0 );
 	}
 	if( wszMethodName )
 	{
 		char* dst = &m_MethodData->MethodName[0];
-		while( *dst++ = *wszMethodName++ );
+		while( (*dst++ = *wszMethodName++) != 0 );
 	}
 
 	gresizePointerArray( sizeof( GODS(METHODDEBUG) ), __g_nStackMethodCount+1, &__g_nStackMethodArraySize, (void**)&__g_lstStackMethod, 40 );

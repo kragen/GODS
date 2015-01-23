@@ -25,7 +25,7 @@ _GMatrix3x3::_GMatrix3x3(	float __11, float __12, float __13,
 // comparison operators
 bool _GMatrix3x3::operator ==( const GMATRIX3X3 &m ) const
 {
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 9 )
@@ -38,7 +38,7 @@ bool _GMatrix3x3::operator ==( const GMATRIX3X3 &m ) const
 };
 bool _GMatrix3x3::operator !=( const GMATRIX3X3 &m ) const
 {
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 9 )
@@ -52,7 +52,7 @@ bool _GMatrix3x3::operator !=( const GMATRIX3X3 &m ) const
 // assignment operators
 const _GMatrix3x3&	_GMatrix3x3::operator =( const GMATRIX3X3& m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 9 )
@@ -66,7 +66,7 @@ const _GMatrix3x3&	_GMatrix3x3::operator =( const GMATRIX3X3& m )
 // matrix multiplication
 const _GMatrix3x3&	_GMatrix3x3::operator +=( const GMATRIX3X3 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 9 )
@@ -78,12 +78,12 @@ const _GMatrix3x3&	_GMatrix3x3::operator +=( const GMATRIX3X3 &m )
 };	
 const _GMatrix3x3&	_GMatrix3x3::operator -=( const GMATRIX3X3 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 9 )
 	{
-		data[i] -= (&m._11)[i];
+		data[i] -= other[i];
 		i++;
 	}
 	return *this;
@@ -99,7 +99,7 @@ const _GMatrix3x3&	_GMatrix3x3::operator *=( const GMATRIX3X3 &m )
 	float *pM = &temp._11;
 
 	memset( pM, 0, sizeof( _GMatrix3x3 ) );
-	char i, j;
+	int i, j;
 	for( i=0; i<3; i++ ) // rows
 	{
 		for( j=0; j<3; j++ ) // cols
@@ -119,7 +119,7 @@ const _GMatrix3x3&	_GMatrix3x3::operator *=( const GMATRIX3X3 &m )
 
 const _GMatrix3x3&	_GMatrix3x3::operator *=( float scalar )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	while( i < 9 )
 	{
@@ -131,7 +131,7 @@ const _GMatrix3x3&	_GMatrix3x3::operator *=( float scalar )
 
 const _GMatrix3x3&	_GMatrix3x3::operator /=( float scalar )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	while( i < 9 )
 	{
@@ -145,7 +145,7 @@ const _GMatrix3x3&	_GMatrix3x3::operator /=( float scalar )
 _GMatrix3x3	_GMatrix3x3::operator + ( const GMATRIX3X3 &m ) const
 {
 	_GMatrix3x3 mResult;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	float* result	= &mResult._11;
@@ -160,7 +160,7 @@ _GMatrix3x3	_GMatrix3x3::operator + ( const GMATRIX3X3 &m ) const
 _GMatrix3x3	_GMatrix3x3::operator - ( const GMATRIX3X3 &m ) const
 {
 	_GMatrix3x3 mResult;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	float* result	= &mResult._11;
@@ -181,9 +181,9 @@ _GMatrix3x3	_GMatrix3x3::operator * ( const GMATRIX3X3 &m ) const
 
 	memset( pM, 0, sizeof( _GMatrix3x3 ) );
 
-	for( unsigned char i=0; i<3; i++ ) // rows
+	for( int i=0; i<3; i++ ) // rows
 	{
-		for( unsigned char j=0; j<3; j++ ) // cols
+		for( int j=0; j<3; j++ ) // cols
 		{
 			pM[3*i+j] += pA[3*i]   * pB[j];
 			pM[3*i+j] += pA[3*i+1] * pB[3+j];
@@ -196,7 +196,7 @@ _GMatrix3x3	_GMatrix3x3::operator * ( const GMATRIX3X3 &m ) const
 _GMatrix3x3	_GMatrix3x3::operator * ( float scalar ) const
 {
 	_GMatrix3x3 mResult;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	float* result	= &mResult._11;
 	while( i < 9 )
@@ -210,7 +210,7 @@ _GMatrix3x3	_GMatrix3x3::operator * ( float scalar ) const
 _GMatrix3x3	_GMatrix3x3::operator / ( float scalar) const
 {
 	_GMatrix3x3 mResult;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	float* result	= &mResult._11;
 	while( i < 9 )
@@ -338,7 +338,7 @@ const GMatrix3x3& _GMatrix3x3::LinearInterpolate( const GMATRIX3X3& a, const GMA
 	float *pT = &this->_11;
 	const float *pA = &a._11;
 	const float *pB = &b._11;
-	for (char i = 0; i < 9; i++) 
+	for (int i = 0; i < 9; i++) 
 	{
 		pT[i] = pA[i] * (1.0f-prop) + pB[i] * prop;
 	}

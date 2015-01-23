@@ -110,20 +110,20 @@ namespace god
 
 #pragma pack( pop )
 
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XXS)			* out_pText );
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XS)			* out_pText );
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_SMALL)		* out_pText );
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_MEDIUM)		* out_pText );
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_LARGE)		* out_pText );
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XL)			* out_pText );
-	uint32_t getTextDataFromString( const char* szText, uint32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XXL)			* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_XXS)		* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_XS)		* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_SMALL)	* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_MEDIUM)	* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_LARGE)	* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_XL)		* out_pText );
-	uint32_t getTextDataFromString( const wchar_t* szText, uint32_t nCharCount, GODS(TEXT_XXL)		* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XXS)			* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XS)			* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_SMALL)		* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_MEDIUM)		* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_LARGE)		* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XL)			* out_pText );
+	uint32_t getTextDataFromString( const char* szText, int32_t nCharCount, uint32_t nCodePage, GODS(TEXT_XXL)			* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_XXS)		* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_XS)		* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_SMALL)	* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_MEDIUM)	* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_LARGE)	* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_XL)		* out_pText );
+	uint32_t getTextDataFromString( const wchar_t* szText, int32_t nCharCount, GODS(TEXT_XXL)		* out_pText );
 };
 
 #endif //_GFILE_CORE_H

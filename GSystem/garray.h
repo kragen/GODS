@@ -1,7 +1,9 @@
-#include "GMemory_core.h"
-
 #ifndef _GARRAY_H
 #define _GARRAY_H
+#include <stdlib.h>
+
+#include "GMemory_core.h"
+
 
 namespace god
 {
@@ -321,7 +323,7 @@ namespace god
 				((_T*)newListBuffer->pByteArray)[iElement] = ((_T*)oldListBuffer->pByteArray)[iElement];
 			((_T*)newListBuffer->pByteArray)[iElement] = value;
 			iElement++;
-			for( iElement; iElement < nNewSize; iElement++ )
+			for( ; iElement < nNewSize; iElement++ )
 				((_T*)newListBuffer->pByteArray)[iElement] = ((_T*)oldListBuffer->pByteArray)[iElement-1];
 			oldListBuffer.free();
 			m_ArrayBuffer = newListBuffer;
@@ -335,8 +337,7 @@ namespace god
 				error_printf("Invalid index! Index=%u. Max index=%u", nIndex, size()-1);
 				return -1;
 			}
-			uint32_t nOldSize = m_ArrayBuffer->nElementCount,
-				nNewSize = m_ArrayBuffer->nElementCount-1;
+			uint32_t nNewSize = m_ArrayBuffer->nElementCount-1;
 			bool bIsText = m_ArrayBuffer->Usage == GUSAGE_TEXT;
 			if( m_ArrayBuffer.am_I_owning() && 
 				m_ArrayBuffer->nSizeInBytes >= (sizeof(_T)*(nNewSize+one_if(bIsText))) )
@@ -359,7 +360,7 @@ namespace god
 			uint32_t iElement;
 			for( iElement=0; iElement < nIndex; iElement++ )
 				((_T*)newListBuffer->pByteArray)[iElement] = ((_T*)oldListBuffer->pByteArray)[iElement];
-			for( iElement; iElement < nNewSize; iElement++ )
+			for( ; iElement < nNewSize; iElement++ )
 				((_T*)newListBuffer->pByteArray)[iElement] = ((_T*)oldListBuffer->pByteArray)[iElement+1];
 			oldListBuffer.free();
 			m_ArrayBuffer = newListBuffer;
@@ -393,12 +394,12 @@ namespace god
 		};
 		virtual error_t				serialize( FILE* out_pFile ) const
 		{
-			uint32_t writtenInstances = fileSerializeData( &m_ArrayBuffer, 1, out_pFile );
+			UNUSED uint32_t writtenInstances = fileSerializeData( &m_ArrayBuffer, 1, out_pFile );
 			return 0;
 		};
 		virtual error_t				deserialize( FILE* in_pFile )
 		{
-			uint32_t readSize = fileDeserializeData( &m_ArrayBuffer, 1, in_pFile );
+			UNUSED uint32_t readSize = fileDeserializeData( &m_ArrayBuffer, 1, in_pFile );
 			return 0;
 		};
 
@@ -908,7 +909,7 @@ namespace god
 				((_T*)newListBuffer->pByteArray)[iElement] = ((_T*)oldListBuffer->pByteArray)[iElement];
 			((_T*)newListBuffer->pByteArray)[iElement] = value;
 			iElement++;
-			for(iElement; iElement < nNewSize; iElement++)
+			for( ; iElement < nNewSize; iElement++)
 				((_T*)newListBuffer->pByteArray)[iElement] = ((_T*)oldListBuffer->pByteArray)[iElement-1];
 			oldListBuffer.free();
 			this->m_ArrayBuffer = newListBuffer;

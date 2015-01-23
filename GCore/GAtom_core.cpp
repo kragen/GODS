@@ -20,17 +20,17 @@ GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(ATOM),
 	"NameOrigin[256]...............: %s\n"
 	"Group.........................: %u\n"
 	"Period........................: %u\n"
-	"AtomicWeight..................: %LG\n"
-	"Density.......................: %LG\n"
-	"MeltPoint.....................: %LG\n"
-	"BoilPoint.....................: %LG\n"
-	"Heat..........................: %LG\n"
-	"Electronegativity.............: %LG\n"
-	"Abundance.....................: %LG\n"
+	"AtomicWeight..................: %G\n"
+	"Density.......................: %G\n"
+	"MeltPoint.....................: %G\n"
+	"BoilPoint.....................: %G\n"
+	"Heat..........................: %G\n"
+	"Electronegativity.............: %G\n"
+	"Abundance.....................: %G\n"
 	, (uint32_t)in_CoreInstance->AtomicNumber			
-	, in_CoreInstance->Symbol[4]				
-	, in_CoreInstance->Name[64]			
-	, in_CoreInstance->NameOrigin[256]		
+	, in_CoreInstance->Symbol				
+	, in_CoreInstance->Name			
+	, in_CoreInstance->NameOrigin
 	, (uint32_t)in_CoreInstance->Group					
 	, (uint32_t)in_CoreInstance->Period					
 	, in_CoreInstance->AtomicWeight			

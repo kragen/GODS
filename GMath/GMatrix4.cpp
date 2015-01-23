@@ -38,7 +38,7 @@ _GMatrix4x4::_GMatrix4x4( float f )
 // comparison operators
 bool _GMatrix4x4::operator ==( const GMATRIX4X4 &m ) const
 {
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -51,7 +51,7 @@ bool _GMatrix4x4::operator ==( const GMATRIX4X4 &m ) const
 };
 bool _GMatrix4x4::operator !=( const GMATRIX4X4 &m ) const
 {
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -65,7 +65,7 @@ bool _GMatrix4x4::operator !=( const GMATRIX4X4 &m ) const
 // assignment operators
 const _GMatrix4x4&	_GMatrix4x4::operator =( const GMATRIX4X4 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -79,7 +79,7 @@ const _GMatrix4x4&	_GMatrix4x4::operator =( const GMATRIX4X4 &m )
 // matrix multiplication
 const _GMatrix4x4&	_GMatrix4x4::operator +=( const GMATRIX4X4 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -91,7 +91,7 @@ const _GMatrix4x4&	_GMatrix4x4::operator +=( const GMATRIX4X4 &m )
 };	
 const _GMatrix4x4&	_GMatrix4x4::operator -=( const GMATRIX4X4 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -111,7 +111,7 @@ const _GMatrix4x4&	_GMatrix4x4::operator *=( const GMATRIX4X4 &m )
 	float *pM = &temp._11;
 
 	memset( pM, 0, sizeof( GMATRIX4X4 ) );
-	char i, j;
+	int i, j;
 	for( i=0; i<4; i++ ) // rows
 	{
 		for( j=0; j<4; j++ ) // cols
@@ -131,7 +131,7 @@ const _GMatrix4x4&	_GMatrix4x4::operator *=( const GMATRIX4X4 &m )
 
 const _GMatrix4x4&	_GMatrix4x4::operator *=( float scalar )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	while( i < 16 )
 	{
@@ -143,7 +143,7 @@ const _GMatrix4x4&	_GMatrix4x4::operator *=( float scalar )
 
 const _GMatrix4x4&	_GMatrix4x4::operator /=( float scalar )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	while( i < 16 )
 	{
@@ -157,7 +157,7 @@ const _GMatrix4x4&	_GMatrix4x4::operator /=( float scalar )
 _GMatrix4x4	_GMatrix4x4::operator + ( const GMATRIX4X4& m ) const
 {
 	_GMatrix4x4 result;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -171,7 +171,7 @@ _GMatrix4x4	_GMatrix4x4::operator + ( const GMATRIX4X4& m ) const
 _GMatrix4x4	_GMatrix4x4::operator - ( const GMATRIX4X4& m ) const
 {
 	_GMatrix4x4 result;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 16 )
@@ -191,7 +191,7 @@ _GMatrix4x4	_GMatrix4x4::operator * ( const GMATRIX4X4& m ) const
 	float *pM = &mResult._11;
 
 	memset( pM, 0, sizeof( _GMatrix4x4 ) );
-	char i, j;
+	int i, j;
 	for( i=0; i<4; i++ ) // rows
 	{
 		for( j=0; j<4; j++ ) // cols
@@ -208,7 +208,7 @@ _GMatrix4x4	_GMatrix4x4::operator * ( const GMATRIX4X4& m ) const
 _GMatrix4x4	_GMatrix4x4::operator * ( float scalar ) const
 {
 	_GMatrix4x4 result;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	while( i < 16 )
 	{
@@ -221,7 +221,7 @@ _GMatrix4x4	_GMatrix4x4::operator * ( float scalar ) const
 _GMatrix4x4	_GMatrix4x4::operator / ( float scalar) const
 {
 	_GMatrix4x4 result;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	while( i < 16 )
 	{
@@ -891,7 +891,7 @@ const _GMatrix4x4& _GMatrix4x4::LinearInterpolate( const GMATRIX4X4& a, const GM
 	float *pT = &this->_11;
 	const float *pA = &a._11;
 	const float *pB = &b._11;
-	for (char i = 0; i < 16; i++) 
+	for (int i = 0; i < 16; i++) 
 	{
 		pT[i] = pA[i] * (1-prop) + pB[i] * prop;
 	}

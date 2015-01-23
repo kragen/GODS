@@ -165,7 +165,7 @@ namespace god
 	error_t	setupTileTemplates_old( GOPTR(TILE_GEOMETRY)* out_lstTileTemplates, GOPTR(TILE_TEXTURE)* out_lstTileTextureTemplates );
 	error_t buildTileGeometry(	GTILEFACE_DIRECTION TileDirection, const GODS(TILE_GEOMETRY) pTileCurrent, const GODS(TILE_GEOMETRY) pTileSide, 
 								uint32_t nGlobalTileX, uint32_t nGlobalTileZ, float fTileScale, bool bCountOnly, GVector3 vOptionalOffset,
-								const GODS(TILE_TEXTURE)* in_lstTileTextureData, uint32_t nTileTextureDataCount, uint32_t nTextureIndex, uint32_t nSubsetIndex,
+								const GODS(TILE_TEXTURE)* in_lstTileTextureData, uint32_t nTileTextureDataCount, int32_t nTextureIndex, uint32_t nSubsetIndex,
 								uint32_t* inout_nVertexCount, uint32_t* inout_nIndexCount, uint32_t* inout_nTriangleCount, 
 								GVector3* out_pVertices, void* out_pIndices, bool b32BitIndices, GVector2* out_pTexCoord, 
 								GVector3* out_pNormals, GVector3* out_pTangents, GVector3* out_pBitangents, 
@@ -176,7 +176,7 @@ namespace god
 	error_t buildTileFaces( GTILEFACE_DIRECTION TileDirection, 
 							const GODS(TILE_GEOMETRY) pTileCurrent, const GODS(TILE_GEOMETRY) pTileFront, const GODS(TILE_GEOMETRY) pTileRight, 
 							uint32_t nGlobalTileX, uint32_t nGlobalTileZ, float fTileScale, bool bCountOnly, GVector3 vOptionalOffset,
-							const GODS(TILE_TEXTURE)* in_lstTileTextureData, uint32_t nTileTextureDataCount, uint32_t nTextureIndex, uint32_t nSubsetIndex,
+							const GODS(TILE_TEXTURE)* in_lstTileTextureData, uint32_t nTileTextureDataCount, int32_t nTextureIndex, uint32_t nSubsetIndex,
 							uint32_t* out_nVertexCount, uint32_t* out_nIndexCount, uint32_t* out_nTriangleCount, 
 							GVector3* out_pVertices, void* out_pIndices, bool b32BitIndices, GVector2* out_pTexCoord, 
 							GVector3* out_pNormals, GVector3* out_pTangents, GVector3* out_pBitangents, 

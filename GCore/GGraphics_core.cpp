@@ -4,6 +4,7 @@
 #include "GGraphics_core.h"
 #include "GMemory_core.h"
 #include "GCore_function_macros.h"
+#include <stdlib.h>
 #include <iostream>
 #include <math.h>
 #ifdef _WIN32

@@ -1,6 +1,12 @@
 #ifndef _GCORE_PRINTF_H
 #define _GCORE_PRINTF_H
 
+#ifdef __GNUC__
+#define UNUSED __attribute__((__unused__))
+#else
+#define UNUSED
+#endif
+
 void _gods_internal_debug_printf_file( const char* chars, int nCharCount );
 void _gods_internal_debug_printf_debugger( const char* chars );
 void _gods_internal_debug_printf_console( const char* chars );

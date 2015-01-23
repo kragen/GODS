@@ -264,7 +264,7 @@ uint32_t god::fileDeserializeData( GODS(BUFFER)* out_DefinitionList, uint32_t nD
 #endif
 			return i;
 		}		
-		if( count1 = pNewData->nSizeInBytes )
+		if( (count1 = pNewData->nSizeInBytes) != 0 )
 		{
 			size1	= sizeof( char );
 			char* buffer = (char*)malloc(count1*size1);
@@ -360,7 +360,7 @@ uint32_t god::memDeserializeData( GODS(BUFFER)* out_DefinitionList, uint32_t nDe
 		memcpy( pNewData.get_data_address(), &((char*)in_pMemoryBuffer)[byteIndex], size1 );
 		byteIndex += size1;
 
-		if( count1 = pNewData->nSizeInBytes )
+		if( (count1 = pNewData->nSizeInBytes) != 0 )
 		{
 			size1	= sizeof( char )*count1;
 			char* buffer = (char*)malloc(size1);
@@ -450,7 +450,7 @@ uint32_t god::fileSerializeData( __GODS(BUFFER)* const* in_DefinitionList, uint3
 			debug_printf("%i _GBUFFER_DATA instances saved to memory stream, %i skipped.", i-nSkipped, nSkipped);		
 			return i;
 		}
-		if( count1 = in_DefinitionList[i]->nSizeInBytes ) // assign size to count1, it is = and not == 
+		if( 0 != (count1 = in_DefinitionList[i]->nSizeInBytes) ) // assign size to count1, it is = and not == 
 		{
 			size1	= sizeof( char );
 			if( fwrite( in_DefinitionList[i]->pByteArray, size1, count1, out_fp ) != (size_t)count1 )
@@ -531,7 +531,7 @@ uint32_t god::memSerializeData( GODS(BUFFER) const* in_DefinitionList, uint32_t 
 			memcpy( &((char*)out_pMemoryBuffer)[byteIndex], ((char*)in_DefinitionList[i])+__GODS(BUFFER)::__kDataOffset, size1 );
 		byteIndex += size1;
 
-		if( count1 = in_DefinitionList[i]->nSizeInBytes )
+		if( 0 != (count1 = in_DefinitionList[i]->nSizeInBytes) )
 		{
 			size1	= sizeof( char )*count1;
 			if( out_pMemoryBuffer )
@@ -574,7 +574,7 @@ int32_t god::gcompareData( const __GODS(BUFFER)* BufferA, const __GODS(BUFFER)* 
 	_rNoPtr = memcmp( _startA, _startB, __GODS(BUFFER)::__kDataSize-sizeof( void* ) );	// compare everything from there except for the void*
 	if( _rNoPtr )	// if the data differs, return not equal
 		return _rWhole;
-	if( _rData = memcmp( BufferA->pByteArray, BufferB->pByteArray, BufferA->nElementCount*GTYPEID_TOTALBYTES(BufferA->DataFormat) ) ) // test only for the valid bytes and not the array size
+	if( 0 != (_rData = memcmp( BufferA->pByteArray, BufferB->pByteArray, BufferA->nElementCount*GTYPEID_TOTALBYTES(BufferA->DataFormat) )) ) // test only for the valid bytes and not the array size
 		return _rData;	// if the data contents differ, return equal.
 	return 0;
 };
@@ -715,7 +715,7 @@ uint32_t god::gfileCompressBufferDataRLE( GODS(BUFFER)* out_DefinitionList, uint
 #endif
 			return i;
 		}		
-		if( count1 = pNewData->nSizeInBytes )
+		if( 0 != (count1 = pNewData->nSizeInBytes)  )
 		{
 			size1	= sizeof( char );
 			char* buffer = (char*)malloc(count1*size1);

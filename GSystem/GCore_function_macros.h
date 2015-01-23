@@ -79,8 +79,12 @@ static const char* STRING_BOOL_FALSE = "false";
 static const wchar_t* WSTRING_BOOL_TRUE = L"true";
 static const wchar_t* WSTRING_BOOL_FALSE = L"false";
 
-#define G_CSTRING_FROM_BOOL(b) ( (b) ? (STRING_BOOL_TRUE)	: (STRING_BOOL_FALSE)	)
-#define G_WSTRING_FROM_BOOL(b) ( (b) ? (WSTRING_BOOL_TRUE)	: (WSTRING_BOOL_FALSE)	)
+inline static const char* G_CSTRING_FROM_BOOL(bool b) {
+  return b ? STRING_BOOL_TRUE : STRING_BOOL_FALSE;
+}
+inline static const wchar_t* G_WSTRING_FROM_BOOL(bool b) {
+  return b ? WSTRING_BOOL_TRUE : WSTRING_BOOL_FALSE;
+}
 
 
 #endif // _GCORE_FUNCTION_MACROS_H

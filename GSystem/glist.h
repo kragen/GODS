@@ -120,7 +120,7 @@ namespace god
 					((_T*)newListBuffer->pByteArray)[iElement] = gacquireData( ((_T*)oldListBuffer->pByteArray)[iElement] );
 				((_T*)newListBuffer->pByteArray)[iElement] = gacquireData( CoreInstance );
 				iElement++;
-				for( iElement; iElement < nNewSize; iElement++ )
+				for(; iElement < nNewSize; iElement++ )
 					((_T*)newListBuffer->pByteArray)[iElement] = gacquireData( ((_T*)oldListBuffer->pByteArray)[iElement-1] );
 				oldListBuffer.free();
 				SetBufferData( newListBuffer );

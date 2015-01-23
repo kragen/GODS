@@ -67,7 +67,7 @@ namespace god
 	}
 
 	error_t pyTupleToArray( const char* in_tupleString, uint32_t nCharCount, GODS(BUFFER)* out_ArrayBuffer );
-	uint32_t pyTupleElementCount( const char* tupleString, uint32_t nCharCount );
+	bool pyTupleElementCount( const char* tupleString, uint32_t nCharCount, uint32_t *result );
 };
 
 #endif // _GCORE_NATIVETYPE_H

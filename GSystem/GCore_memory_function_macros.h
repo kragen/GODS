@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <wchar.h>
+
 #define BINFIBO						1458552799L
 #define errmsg_buffover()			error_printf("Buffer overrun detected!");
 #define errmsg_refcountnull()		error_printf("Reference counter is zero! This is often because of a gcore_ptr being cast to either a GODS() or a GOSH() type and then released with gfreeData()/gfreeInterface(). As casting to a reference to the GODS/GOSH doesn't mean the pointer is being copied, the reference counter is not incremented.")
@@ -127,7 +130,7 @@ structName* god::gacquireInterface( structName* p )			\
 			(p)->__nRefCount = 1;																			\
 		case 1:																								\
 			ENTER_CRITICAL_SECTION(Token);																	\
-			if( (0xFFFFFFFFUL == (uint32_t)(__g_lst##Token)) || gresizePointerArray( sizeof( structName* ),	\
+			if( (0xFFFFFFFFUL == (size_t)(__g_lst##Token)) || gresizePointerArray( sizeof( structName* ),	\
 									__g_n##Token##Count+1, 													\
 									&__g_n##Token##ArraySize,												\
 									(void**)&__g_lst##Token ) )												\
@@ -453,7 +456,8 @@ int32_t god::gcompareData( const structName* p1, const structName* p2 )			\
 			const _structName* in_CoreInstance )								\
 		{																		\
 			if( 0 == in_CoreInstance )											\
-			{																	\
+			{ \
+                                no, es muy truchoo                                                                     \
 				/*swprintf( pOutputBuffer, L"%s\n", L"(null)" );*/	\
 				return;															\
 			}																	\
@@ -484,23 +488,22 @@ int32_t god::gcompareData( const structName* p1, const structName* p2 )			\
 		{																		\
 			if( 0 == in_CoreInstance )											\
 			{																	\
-				sprintf_s( pOutputBuffer, nBufferSize, "%s\n", "(null)" );		\
+				snprintf( pOutputBuffer, nBufferSize, "%s\n", "(null)" );		\
 				return;															\
 			}																	\
-			sprintf_s( pOutputBuffer, nBufferSize, format "\n", __VA_ARGS__	);	\
+			snprintf( pOutputBuffer, nBufferSize, format "\n", __VA_ARGS__	);	\
 		};																		\
 		void god::getInfoString( wchar_t* pOutputBuffer, uint32_t nBufferSize,	\
 			const _structName* in_CoreInstance )								\
 		{																		\
 			if( 0 == in_CoreInstance )											\
 			{																	\
-				swprintf_s( pOutputBuffer, nBufferSize, L"%s\n", L"(null)" );	\
+				swprintf( pOutputBuffer, nBufferSize, L"%s\n", L"(null)" );	\
 				return;															\
 			}																	\
 			char buffer[2048];													\
-			sprintf_s( buffer, nBufferSize, format "\n", __VA_ARGS__	);		\
-			size_t n;															\
-			mbstowcs_s( &n, pOutputBuffer, nBufferSize, buffer, 2048 );			\
+			snprintf( buffer, sizeof(buffer), format "\n", __VA_ARGS__ ); \
+			mbstowcs( pOutputBuffer, buffer, nBufferSize );			\
 		};		
 
 #define GDEFINE_PRINTINFOSTRING_FUNCTIONW( _structName, format, ... )				\
@@ -534,11 +537,11 @@ int32_t god::gcompareData( const structName* p1, const structName* p2 )			\
 	{																				\
 		if( 0 == in_CoreInstance )													\
 		{																			\
-			sprintf_s( pOutputBuffer, nBufferSize, "%s\n", "(null)" );				\
+			snprintf( pOutputBuffer, nBufferSize, "%s\n", "(null)" );				\
 			return;																	\
 		}																			\
 		wchar_t buffer[2048];														\
-		size_t n = swprintf_s( buffer, nBufferSize, format L"\n", __VA_ARGS__	);	\
+		size_t n = swprintf( buffer, nBufferSize, format L"\n", __VA_ARGS__ );	\
 		wcstombs_s( &n, pOutputBuffer, nBufferSize, buffer, n );					\
 	};
 

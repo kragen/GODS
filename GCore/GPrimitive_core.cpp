@@ -1,6 +1,7 @@
 #include "GPrimitive_core.h"
 #include "GCore_function_macros.h"
 #include <math.h>
+#include <limits.h>
 
 #include "GCore_printf.h"
 #include "GDebugger_core.h"

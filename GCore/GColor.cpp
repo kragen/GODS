@@ -85,7 +85,7 @@ _GCOLOR _GCOLOR::operator +( const _GCOLOR& color ) const
 
 _GCOLOR& _GCOLOR::operator *=( float scalar )
 { 
-	r *= scalar; g *= scalar; b *= scalar; a;
+  r *= scalar; g *= scalar; b *= scalar; // And leave a untouched.
 	r = min(1.0f,max(0,r));
 	g = min(1.0f,max(0,g));
 	b = min(1.0f,max(0,b));
@@ -94,7 +94,7 @@ _GCOLOR& _GCOLOR::operator *=( float scalar )
 
 _GCOLOR& _GCOLOR::operator *=( double scalar )
 { 
-	r *= (float)scalar; g *= (float)scalar; b *= (float)scalar; a;
+	r *= (float)scalar; g *= (float)scalar; b *= (float)scalar; // And leave a untouched.
 	r = min(1.0f,max(0,r));
 	g = min(1.0f,max(0,g));
 	b = min(1.0f,max(0,b));
@@ -103,7 +103,7 @@ _GCOLOR& _GCOLOR::operator *=( double scalar )
 
 _GCOLOR& _GCOLOR::operator /=( float scalar )
 { 
-	r /= scalar; g /= scalar; b /= scalar; a;
+	r /= scalar; g /= scalar; b /= scalar; // And leave a untouched.
 	r = min(1.0f,max(0,r));
 	g = min(1.0f,max(0,g));
 	b = min(1.0f,max(0,b));
@@ -112,7 +112,7 @@ _GCOLOR& _GCOLOR::operator /=( float scalar )
 
 _GCOLOR& _GCOLOR::operator /=( double scalar )
 { 
-	r /= (float)scalar; g /= (float)scalar; b /= (float)scalar; a;
+	r /= (float)scalar; g /= (float)scalar; b /= (float)scalar; // And leave a untouched.
 	r = min(1.0f,max(0,r));
 	g = min(1.0f,max(0,g));
 	b = min(1.0f,max(0,b));
@@ -122,7 +122,7 @@ _GCOLOR& _GCOLOR::operator /=( double scalar )
 
 _GCOLOR& _GCOLOR::operator +=( const _GCOLOR& color )
 { 
-	r += color.r; g += color.g; b += color.b; a;
+	r += color.r; g += color.g; b += color.b; // And leave a untouched.
 	r = min(1.0f,max(0,r));
 	g = min(1.0f,max(0,g));
 	b = min(1.0f,max(0,b));

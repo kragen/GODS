@@ -2,11 +2,12 @@
 #include "GCore_macros.h"
 #include "GCore_printf.h"
 #include <stdio.h>
-#if defined(ANDROID)
-#define _CrtDbgBreak() {}
+#if defined(__linux__) || defined(ANDROID)
+#define _CrtDbgBreak() do {} while(0)
 #elif defined(WIN32) || defined(_WIN32) 
 #include <crtdbg.h>
 #endif
+
 
 #ifndef _GBASE_PTR_H
 #define _GBASE_PTR_H

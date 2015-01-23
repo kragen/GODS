@@ -179,7 +179,7 @@ namespace god
 	static void onCreateAtomDefault(ggns_Atom* stuff)
 	{
 		memset((*stuff).get_data_address(), 0, (*stuff).get_data_size());
-	};
+	}
 
 	typedef uint8_t GFINTERACTION_TYPE;
 	static const GFINTERACTION_TYPE GFINTERACTIONTYPE_STRONG			= 1;

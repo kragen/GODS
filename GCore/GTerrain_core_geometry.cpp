@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <math.h>
+#include <limits.h>
 
 using namespace god;
 
@@ -103,7 +104,7 @@ int32_t god::buildTerrainGeometry( GTILE_GEOMETRY_DATA const* in_lstTileGeometry
 				newBufferSliceDataChunk->IndexOffset		= nIndexCount;
 			}
 
-			if( result=buildChunkGeometry( in_lstTileGeometryData, nTotalWidth, nTotalDepth, in_lstTileTextureData, nTileTextureDataCount, bCountOnly, nTileOffsetX, nTileOffsetZ,
+			if( 0 != (result=buildChunkGeometry( in_lstTileGeometryData, nTotalWidth, nTotalDepth, in_lstTileTextureData, nTileTextureDataCount, bCountOnly, nTileOffsetX, nTileOffsetZ,
 				fTileScale, vOptionalOffset, nTextureCount, nSubgridColumnTiles, nSubgridRowTiles, nChunkIndex, &nVertexCount, &nIndexCount, &nTriangleCount, &nSubsetIndex, 
 				out_pVertices, out_pIndices, *inout_b32BitIndices, out_pTexCoord, 
 				out_pNormals, out_pTangents, out_pBitangents,
@@ -116,7 +117,7 @@ int32_t god::buildTerrainGeometry( GTILE_GEOMETRY_DATA const* in_lstTileGeometry
 				out_lstBufferSliceDataSubsets, 
 				inout_nTopTileCount, inout_nFrontTileCount, inout_nRightTileCount,
 				inout_nBottomTileCount, inout_nBackTileCount, inout_nLeftTileCount
-				) )
+				)) )
 			{
 				error_printf("BuildChunkGeometry() returned 0x%X!", result);
 				return -1;
@@ -429,12 +430,10 @@ error_t god::buildChunkSubsetGeometry( GTILEFACE_DIRECTION TileDirection, GTILE_
 		nLocalTileX	= 0,
 		nLocalTileZ	= 0;
 
-	uint32_t nSubsetID, nSubsetVertexCount, nSubsetFaceStart, nSubsetFaceCount, nSubsetVertexStart;
+	uint32_t nSubsetVertexCount, nSubsetVertexStart;
 
 	GTILE_GEOMETRY_DATA pTileCurrent=0, pTileFront=0, pTileRight=0;
 
-	nSubsetID			= nSubsetIndex;
-	nSubsetFaceStart	= nTriangleCount;
 	nSubsetVertexStart	= nVertexCount;
 	for( nLocalTileZ=0; nLocalTileZ<nChunkRowTileCount; nLocalTileZ++ )
 	{
@@ -472,7 +471,6 @@ error_t god::buildChunkSubsetGeometry( GTILEFACE_DIRECTION TileDirection, GTILE_
 			gfreeData( &pTileRight );
 		} // j=0;
 	} // i=0;
-	nSubsetFaceCount		= nTriangleCount - nSubsetFaceStart;
 	nSubsetVertexCount = nVertexCount - nSubsetVertexStart;
 	if( nSubsetVertexCount > 0 )
 		nSubsetIndex++;
@@ -493,7 +491,7 @@ error_t god::buildChunkSubsetGeometry( GTILEFACE_DIRECTION TileDirection, GTILE_
 
 error_t god::buildTileFaces( GTILEFACE_DIRECTION TileDirection, const GTILE_GEOMETRY_DATA pTileCurrent, const GTILE_GEOMETRY_DATA pTileFront, const GTILE_GEOMETRY_DATA pTileRight, 
 							uint32_t nGlobalTileX, uint32_t nGlobalTileZ, float fTileScale, bool bCountOnly, GVector3 vOptionalOffset,
-							const GTILE_TEXTURE_DATA* in_lstTileTextureData, uint32_t nTileTextureDataCount, uint32_t nTextureIndex, uint32_t nSubsetIndex,
+							const GTILE_TEXTURE_DATA* in_lstTileTextureData, uint32_t nTileTextureDataCount, int32_t nTextureIndex, uint32_t nSubsetIndex,
 							uint32_t* inout_nVertexCount, uint32_t* inout_nIndexCount, uint32_t* inout_nTriangleCount, 
 							GVector3* out_pVertices, void* out_pIndices, bool b32BitIndices, GVector2* out_pTexCoord, 
 							GVector3* out_pNormals, GVector3* out_pTangents, GVector3* out_pBitangents, 
@@ -605,7 +603,7 @@ error_t god::buildTileFaces( GTILEFACE_DIRECTION TileDirection, const GTILE_GEOM
 
 error_t god::buildTileGeometry( GTILEFACE_DIRECTION TileDirection, const GTILE_GEOMETRY_DATA pTileCurrent, const GTILE_GEOMETRY_DATA pTileSide, 
 								uint32_t nGlobalTileX, uint32_t nGlobalTileZ, float fTileScale, bool bCountOnly, GVector3 vOptionalOffset,
-								const GTILE_TEXTURE_DATA* in_lstTileTextureData, uint32_t nTileTextureDataCount, uint32_t nTextureIndex, uint32_t nSubsetIndex,
+								const GTILE_TEXTURE_DATA* in_lstTileTextureData, uint32_t nTileTextureDataCount, int32_t nTextureIndex, uint32_t nSubsetIndex,
 								uint32_t* inout_nVertexCount, uint32_t* inout_nIndexCount, uint32_t* inout_nTriangleCount, 
 								GVector3* out_pVertices, void* out_pIndices, bool b32BitIndices, GVector2* out_pTexCoord, 
 								GVector3* out_pNormals, GVector3* out_pTangents, GVector3* out_pBitangents, 
@@ -1027,9 +1025,7 @@ error_t god::recalculateTerrainNormals( const GVector3* in_pVertices, GTILE_MAPP
 		error_printf("Invalid parameters! All parameters are mandatory for this function to work!");
 		return -1;
 	}
-	float fScale = .1f;
-	if( fTileScale != 0.0f )
-		fScale = 1.0f/fTileScale;
+
 	uint32_t i, 
 		nTotalTiles = nWidth*nDepth;
 	GTILE_MAPPING_DATA pIdxCurrent;
@@ -1046,7 +1042,7 @@ error_t god::recalculateTerrainNormals( const GVector3* in_pVertices, GTILE_MAPP
 		if( 0 == pTileCurrent || -1 == pIdxCurrent->VerticesTop[0] )
 			continue;
 
-		if( result = recalculateTileNormals( in_pVertices, pTileCurrent, pIdxCurrent, fTileScale, out_pNormals ) )
+		if( 0 != (result = recalculateTileNormals( in_pVertices, pTileCurrent, pIdxCurrent, fTileScale, out_pNormals )) )
 		{
 			error_printf( "RecalculateTileNormals() returned 0x%X.", result );
 			return -1;
@@ -1209,16 +1205,14 @@ error_t god::blendTerrainNormals( const GVector3* in_pVertices, GTILE_MAPPING_DA
 
 	uint32_t i=0, j=0, nTextureIndex=0, nChunkColumnIndex=0, rs=0, nGlobalTileIndex=0;
 
-	uint32_t nChunkIndex = 0;
 	error_t result=0;
 	for( rs=0; rs<nRowChunkCount; rs++ )
 	{
 		for( nChunkColumnIndex=0; nChunkColumnIndex<nColumnChunkCount; nChunkColumnIndex++ )
 		{
-			nChunkIndex = (rs*nColumnChunkCount)+nChunkColumnIndex;
 			nTileOffsetX = (nChunkColumnTileCount)*nChunkColumnIndex;
 			nTileOffsetZ = (nChunkRowTileCount)*rs;
-			if( result = blendChunkNormals( in_pVertices, in_lstTileMappingData, in_lstTileGeometryData, nWidth, nDepth, nChunkRowTileCount, nChunkColumnTileCount, nTileOffsetX, nTileOffsetZ, fTileScale, out_pNormals ) )
+			if( 0 != (result = blendChunkNormals( in_pVertices, in_lstTileMappingData, in_lstTileGeometryData, nWidth, nDepth, nChunkRowTileCount, nChunkColumnTileCount, nTileOffsetX, nTileOffsetZ, fTileScale, out_pNormals )) )
 			{
 				error_printf("blendChunkNormals() returned 0x%X!", result);
 				return -1;
@@ -1237,7 +1231,7 @@ error_t god::blendChunkNormals( const GVector3* in_pVertices, GTILE_MAPPING_DATA
 {
 	GPROFILE_FUNCTION();
 	uint32_t nLocalTileX, nLocalTileZ;
-	uint32_t nGlobalTileIndex, nGlobalTileX, nGlobalTileZ, 
+	uint32_t nGlobalTileIndex, nGlobalTileX, 
 		nTotalTiles = nTotalWidth*nTotalDepth;
 	GTILE_MAPPING_DATA pIdxCurrent, pIdxFront, pIdxRight, pIdxFrontRight;
 	GTILE_GEOMETRY_DATA pTileCurrent, pTileFront=0, pTileRight=0, pTileFrontRight=0;
@@ -1249,8 +1243,6 @@ error_t god::blendChunkNormals( const GVector3* in_pVertices, GTILE_MAPPING_DATA
 		{
 			// As we build from local chunk coordinates, we need to calculate the global tile indices
 			nGlobalTileIndex	= (nTileOffsetZ+nLocalTileZ)*nTotalWidth+nLocalTileX+nTileOffsetX;
-			nGlobalTileX		= (nLocalTileX + nTileOffsetX);	// nGlobalTileIndex % nTotalWidth;
-			nGlobalTileZ		= (nLocalTileZ + nTileOffsetZ);	// nGlobalTileIndex / nTotalWidth;
 			pIdxCurrent		= in_lstTileMappingData[nGlobalTileIndex];
 			pTileCurrent	= in_lstTileGeometryData[nGlobalTileIndex];
 			if( 0 == pIdxCurrent || -1 == pIdxCurrent->VerticesTop[0] )
@@ -1310,11 +1302,11 @@ error_t god::blendChunkNormals( const GVector3* in_pVertices, GTILE_MAPPING_DATA
 				pTileFrontRight	= 0;
 			};
 
-			if( result = blendTileNormals( pIdxCurrent, pTileCurrent, 
+			if( 0 != (result = blendTileNormals( pIdxCurrent, pTileCurrent, 
 				0, 0, 0, 0, pIdxFront, 0, pIdxRight, pIdxFrontRight,
 				0, 0, 0, 0, pTileFront, 0, pTileRight, pTileFrontRight,
 				out_pNormals
-				) )
+				) ) )
 			{
 				error_printf("blendTileNormals() returned 0x%X!", result);
 				return -1;
@@ -1439,7 +1431,7 @@ error_t god::setTileCornerHeightBackLeft(
 		bWallRight	;	// = TileMappingBack		? (TileMappingBack->VerticesFront[3] != -1) : false;
 
 	error_t result=0;
-	if( result=getTileCornerWallsBackLeft( TileMappingBackLeft, TileMappingLeft, TileMappingBack, &bWallBack, &bWallLeft, &bWallFront, &bWallRight ) )
+	if( (result=getTileCornerWallsBackLeft( TileMappingBackLeft, TileMappingLeft, TileMappingBack, &bWallBack, &bWallLeft, &bWallFront, &bWallRight )) )
 	{
 		error_printf("getTileCornerWallsFrontLeft() returned error. This is very unlikely due the nature of the call--it shouldn't happen!.");
 		return -1;
@@ -1556,7 +1548,7 @@ error_t god::setTileCornerHeightFrontLeft(
 		bWallRight	; //= TileMappingCurrent	? (TileMappingCurrent->VerticesFront[1] != -1) : false;
 	
 	error_t result=0;
-	if( result=getTileCornerWallsFrontLeft( TileMappingCurrent, TileMappingLeft, TileMappingFrontLeft, &bWallBack, &bWallLeft, &bWallFront, &bWallRight ) )
+	if( (result=getTileCornerWallsFrontLeft( TileMappingCurrent, TileMappingLeft, TileMappingFrontLeft, &bWallBack, &bWallLeft, &bWallFront, &bWallRight )) )
 	{
 		error_printf("getTileCornerWallsFrontLeft() returned error. This is very unlikely due the nature of the call, it shouldn't happen!.");
 		return -1;
@@ -1686,7 +1678,7 @@ error_t god::setTileCornerHeightBackRight(
 		bWallRight	;	// = TileMappingBackRight	? (TileMappingBackRight->VerticesFront[3] != -1) : false;
 
 	error_t result=0;
-	if( result=getTileCornerWallsBackRight( TileMappingCurrent, TileMappingBack, TileMappingBackRight, &bWallBack, &bWallLeft, &bWallFront, &bWallRight ) )
+	if( (result=getTileCornerWallsBackRight( TileMappingCurrent, TileMappingBack, TileMappingBackRight, &bWallBack, &bWallLeft, &bWallFront, &bWallRight )) )
 	{
 		error_printf("getTileCornerWallsBackRight() returned error. This is very unlikely due the nature of the call, it shouldn't happen!");
 		return -1;
@@ -1817,7 +1809,7 @@ error_t god::setTileCornerHeightFrontRight(
 	bool bWallBack, bWallLeft, bWallFront, bWallRight;
 
 	error_t result=0;
-	if( result=getTileCornerWallsFrontRight( TileMappingCurrent, TileMappingFront, TileMappingRight, &bWallBack, &bWallLeft, &bWallFront, &bWallRight ) )
+	if( (result=getTileCornerWallsFrontRight( TileMappingCurrent, TileMappingFront, TileMappingRight, &bWallBack, &bWallLeft, &bWallFront, &bWallRight )) )
 	{
 		error_printf("getTileCornerWallsFrontRight() returned error. This is very unlikely due the nature of the call, it shouldn't happen!.");
 		return -1;
@@ -1969,14 +1961,14 @@ error_t god::setTileCornerHeights(	GTILE_BORDER Boundaries,
 	{
 		if( Boundaries & GTILEBORDER_BACK )
 		{
-			if( result = setTileCornerHeightBackLeft( TileMappingCurrent, TileMappingBackLeft, TileMappingLeft, TileMappingBack, fHeights[0], out_pVertices ) )
+			if( (result = setTileCornerHeightBackLeft( TileMappingCurrent, TileMappingBackLeft, TileMappingLeft, TileMappingBack, fHeights[0], out_pVertices )) )
 			{
 				error_printf("setTileCornerHeightBackLeft() returned 0x%X!", result);
 			};
 		}
 		if( Boundaries & GTILEBORDER_FRONT )
 		{
-			if( result = setTileCornerHeightFrontLeft( TileMappingCurrent, TileMappingLeft, TileMappingFrontLeft, TileMappingFront, fHeights[1], out_pVertices ) )
+			if( (result = setTileCornerHeightFrontLeft( TileMappingCurrent, TileMappingLeft, TileMappingFrontLeft, TileMappingFront, fHeights[1], out_pVertices )) )
 			{
 				error_printf("setTileCornerHeightFrontLeft() returned 0x%X!", result);
 			};
@@ -1986,14 +1978,14 @@ error_t god::setTileCornerHeights(	GTILE_BORDER Boundaries,
 	{
 		if( Boundaries & GTILEBORDER_BACK )
 		{
-			if( result = setTileCornerHeightBackRight( TileMappingCurrent, TileMappingBack, TileMappingBackRight, TileMappingRight, fHeights[2], out_pVertices ) )
+			if( (result = setTileCornerHeightBackRight( TileMappingCurrent, TileMappingBack, TileMappingBackRight, TileMappingRight, fHeights[2], out_pVertices )) )
 			{
 				error_printf("setTileCornerHeightBackRight() returned 0x%X!", result);
 			};
 		}
 		if( Boundaries & GTILEBORDER_FRONT )
 		{
-			if( result = setTileCornerHeightFrontRight( TileMappingCurrent, TileMappingFront, TileMappingRight, TileMappingFrontRight, fHeights[3], out_pVertices ) )
+			if( (result = setTileCornerHeightFrontRight( TileMappingCurrent, TileMappingFront, TileMappingRight, TileMappingFrontRight, fHeights[3], out_pVertices )) )
 			{
 				error_printf("setTileCornerHeightFrontRight() returned 0x%X!", result);
 			};

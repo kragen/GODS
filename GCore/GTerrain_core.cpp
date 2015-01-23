@@ -60,6 +60,8 @@ GDEFINE_PRINTINFOSTRING_FUNCTIONA( __GODS(TILE_MAPPING),
 	"VerticesRight[4]..............: [%i,%i,%i,%i]" 
 	, in_CoreInstance->nChunkIndex
 	, in_CoreInstance->SubsetIndexTop
+	, in_CoreInstance->SubsetIndexFront
+	, in_CoreInstance->SubsetIndexRight
 	, in_CoreInstance->VerticesTop[0]
 	, in_CoreInstance->VerticesTop[1]
 	, in_CoreInstance->VerticesTop[2]

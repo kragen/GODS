@@ -122,10 +122,6 @@ error_t god::BuildMeshGeometryFromMeshElements(
 	if( 0 == inout_nVertexCount || 0 == inout_nIndexCount )
 		return -1;
 
-	bool bCountOnly = false;
-	if( 0 == out_pVertices )
-		bCountOnly = true;
-
 	uint32_t nNodeCount=in_lstNodeSlices->size();	//nNodeCount;
 	if( 0 == nNodeCount )
 		return 0;
@@ -296,8 +292,8 @@ error_t god::BuildMeshGeometryFromMeshElements(
 		if( out_lstNodeBV )
 		{
 			GVector3 dif = (newNodeBV->vMax - newNodeBV->vMin);
-			newNodeBV->vCenter = newNodeBV->vMin + (newNodeBV->vMax - newNodeBV->vMin)/2;	// ? I'm not really sure about this right now
-			newNodeBV->fRadius = (newNodeBV->vMax - newNodeBV->vCenter).Length();
+			newNodeBV->vCenter = newNodeBV->vMin + dif/2;	// ? I'm not really sure about this right now
+			newNodeBV->fRadius = dif.Length();
 			oldBV = out_lstNodeBV[iNode];
 			out_lstNodeBV[iNode] = newNodeBV.acquire();
 		}

@@ -1,26 +1,24 @@
 #include "GCore_printf.h"
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
 #include <time.h>
-#if defined( ANDROID )
-#include <android\log.h>
+#if defined(ANDROID) || defined(__linux__)
+    #ifdef ANDROID
+        #include <android/log.h>
+        #define GLOG(...) ((void)__android_log_print(__VA_ARGS__))
+    #else // regular Linux
+        #define GLOG(level, gods, ...) ((void)fprintf(stderr, __VA_ARGS__))
+    #endif
 
-#define GLOGD(...) ((void)__android_log_print(ANDROID_LOG_DEBUG,  \
-											 "GODS", \
-											 __VA_ARGS__))
-#define GLOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO,  \
-											 "GODS", \
-											 __VA_ARGS__))
-#define GLOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN,  \
-											 "GODS", \
-											 __VA_ARGS__))
-#define GLOGE(...) ((void)__android_log_print(ANDROID_LOG_ERROR,  \
-											 "GODS", \
-											 __VA_ARGS__))
+    #define GLOGD(...) GLOG(ANDROID_LOG_DEBUG, "GODS", __VA_ARGS__)
+    #define GLOGI(...) GLOG(ANDROID_LOG_INFO, "GODS", __VA_ARGS__)
+    #define GLOGW(...) GLOG(ANDROID_LOG_WARN, "GODS", __VA_ARGS__)
+    #define GLOGE(...) GLOG(ANDROID_LOG_ERROR, "GODS", __VA_ARGS__)
 
-#elif defined( WIN32 ) || defined( _WIN32 )
-#include <Windows.h>
+#else // Windows
+    #include <Windows.h>
 #endif
 
 void _gods_internal_debug_printf_file( const char* chars, int nCharCount )
@@ -31,16 +29,12 @@ void _gods_internal_debug_printf_file( const char* chars, int nCharCount )
 #if defined( WIN32 ) // || defined( _WIN32 )
 	static tm __debug_tm;															
 	static errno_t __errMy	= gmtime_s(&__debug_tm, &__today_0);					
-	static errno_t errMt_0 = sprintf_s(__debug_file_name, "log__");											
-	static errno_t errMt_1 = _itoa_s(__debug_tm.tm_year+1900, temp, 10);											
-	static errno_t errMt_2 = strcat_s(__debug_file_name, temp);												
-	static errno_t errMt_3 = strcat_s(__debug_file_name, "__");												
-	static errno_t errMt_4 = _itoa_s(__debug_tm.tm_mon+1, temp, 10);											
-	static errno_t errMt_5 = strcat_s(__debug_file_name, temp);												
-	static errno_t errMt_6 = strcat_s(__debug_file_name, "__");												
-	static errno_t errMt_7 = _itoa_s(__debug_tm.tm_mday, temp, 10);											
-	static errno_t errMt_8 = strcat_s(__debug_file_name, temp);												
-	static errno_t errMt_9 = strcat_s(__debug_file_name, ".txt");											
+	static int errMt_0 = snprintf(__debug_file_name, sizeof(__debug_file_name),
+				      "log__%d__%d__%d.txt",
+				      __debug_tm.tm_year+1900,
+				      __debug_tm.tm_mon+1,
+				      __debug_tm.tm_mday); 
+							
 	FILE* __debug_fp = 0;															
 	errno_t ferrMy;
 	OutputDebugStringA( chars );
@@ -59,21 +53,21 @@ void _gods_internal_debug_printf_file( const char* chars, int nCharCount )
 	}																				
 #else
 	static tm* __debug_tm = gmtime(&__today_0);
-	static int32_t errMt_0 = sprintf(__debug_file_name, "log__");
-	static int32_t errMt_1 = snprintf(temp, 8, "%d", __debug_tm->tm_year+1900, temp);
-	static const char* errMt_2 = strcat(__debug_file_name, temp);
-	static const char* errMt_3 = strcat(__debug_file_name, "__");
-	static int32_t errMt_4 = snprintf(temp, 8, "%d", __debug_tm->tm_mon+1, temp);
-	static const char* errMt_5 = strcat(__debug_file_name, temp);
-	static const char* errMt_6 = strcat(__debug_file_name, "__");
-	static int32_t errMt_7 = snprintf(temp, 8, "%d", __debug_tm->tm_mday, temp);
-	static const char* errMt_8 = strcat(__debug_file_name, temp);
-	static const char* errMt_9 = strcat(__debug_file_name, ".txt");
+	UNUSED static int32_t errMt_0 = sprintf(__debug_file_name, "log__");
+	UNUSED static int32_t errMt_1 = snprintf(temp, 8, "%d", __debug_tm->tm_year+1900);
+	UNUSED static const char* errMt_2 = strcat(__debug_file_name, temp);
+	UNUSED static const char* errMt_3 = strcat(__debug_file_name, "__");
+	UNUSED static int32_t errMt_4 = snprintf(temp, 8, "%d", __debug_tm->tm_mon+1);
+	UNUSED static const char* errMt_5 = strcat(__debug_file_name, temp);
+	UNUSED static const char* errMt_6 = strcat(__debug_file_name, "__");
+	UNUSED static int32_t errMt_7 = snprintf(temp, 8, "%d", __debug_tm->tm_mday);
+	UNUSED static const char* errMt_8 = strcat(__debug_file_name, temp);
+	UNUSED static const char* errMt_9 = strcat(__debug_file_name, ".txt");
 	GLOGE( chars );
 	FILE* __debug_fp = fopen(  __debug_file_name, "ab" );
 	if( 0 == __debug_fp )
 	{
-		if( __debug_fp = fopen( __debug_file_name, "wb" ) )
+		if( (__debug_fp = fopen( __debug_file_name, "wb" )) )
 		{
 			fwrite( chars, sizeof( char ), nCharCount, __debug_fp );
 			fclose( __debug_fp );

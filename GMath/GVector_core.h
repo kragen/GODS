@@ -8,16 +8,8 @@ namespace god
 #pragma pack( push, 1 )
 	struct GVECTOR2
 	{
-		union
-		{
-			float x;
-			float u;
-		};
-		union
-		{
-			float y;
-			float v;
-		};
+		float x;
+		float y;
 	};
 
 	struct GVECTOR3

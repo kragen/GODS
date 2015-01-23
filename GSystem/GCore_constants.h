@@ -10,6 +10,7 @@
 ///
 #ifndef _GCORE_CONSTANTS_H
 #define _GCORE_CONSTANTS_H
+#include <stddef.h>
 
 #if defined( GDISABLE_STDINT ) 
 #	if !defined( WIN32 )

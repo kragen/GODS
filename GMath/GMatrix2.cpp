@@ -22,7 +22,7 @@ _GMatrix2x2::_GMatrix2x2(	float __11, float __12,
 // comparison operators
 bool _GMatrix2x2::operator ==( const GMATRIX2X2 &m ) const
 {
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 4 )
@@ -35,7 +35,7 @@ bool _GMatrix2x2::operator ==( const GMATRIX2X2 &m ) const
 };
 bool _GMatrix2x2::operator !=( const GMATRIX2X2 &m ) const
 {
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 4 )
@@ -49,7 +49,7 @@ bool _GMatrix2x2::operator !=( const GMATRIX2X2 &m ) const
 // assignment operators
 const _GMatrix2x2&	_GMatrix2x2::operator +=( const GMATRIX2X2 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 4 )
@@ -61,7 +61,7 @@ const _GMatrix2x2&	_GMatrix2x2::operator +=( const GMATRIX2X2 &m )
 };	
 const _GMatrix2x2&	_GMatrix2x2::operator -=( const GMATRIX2X2 &m )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	const float* other	= &m._11;
 	while( i < 4 )
@@ -81,7 +81,7 @@ const _GMatrix2x2&	_GMatrix2x2::operator *=( const GMATRIX2X2 &m )
 	float *pM = &temp._11;
 
 	memset( pM, 0, sizeof( _GMatrix2x2 ) );
-	char i, j;
+	int i, j;
 	for( i=0; i<2; i++ ) // rows
 		for( j=0; j<2; j++ ) // cols
 		{
@@ -119,7 +119,7 @@ const _GMatrix2x2&	_GMatrix2x2::operator *=( const GMATRIX2X2 &m )
 
 const _GMatrix2x2&	_GMatrix2x2::operator *=( float scalar )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	while( i < 4 )
 	{
@@ -131,7 +131,7 @@ const _GMatrix2x2&	_GMatrix2x2::operator *=( float scalar )
 
 const _GMatrix2x2&	_GMatrix2x2::operator /=( float scalar )
 {
-	char i=0;
+	int i=0;
 	float* data	= &this->_11;
 	while( i < 4 )
 	{
@@ -145,7 +145,7 @@ const _GMatrix2x2&	_GMatrix2x2::operator /=( float scalar )
 _GMatrix2x2	_GMatrix2x2::operator + ( const GMATRIX2X2 &m ) const
 {
 	_GMatrix2x2 result;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	while( i < 4 )
 	{
@@ -158,7 +158,7 @@ _GMatrix2x2	_GMatrix2x2::operator + ( const GMATRIX2X2 &m ) const
 _GMatrix2x2	_GMatrix2x2::operator - ( const GMATRIX2X2 &m ) const
 {
 	_GMatrix2x2 result;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	while( i < 4 )
 	{
@@ -175,7 +175,7 @@ _GMatrix2x2	_GMatrix2x2::operator * ( const GMATRIX2X2 &m ) const
 	const float *pB = &m._11;
 	float *pM = &mResult._11;
 	memset( pM, 0, sizeof( _GMatrix2x2 ) );
-	char i, j;
+	int i, j;
 	for( i=0; i<2; i++ ) // rows
 		for( j=0; j<2; j++ ) // cols
 		{
@@ -188,7 +188,7 @@ _GMatrix2x2	_GMatrix2x2::operator * ( const GMATRIX2X2 &m ) const
 _GMatrix2x2	_GMatrix2x2::operator * ( float scalar ) const
 {
 	_GMatrix2x2 mResult;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	float *pResult		= &mResult._11;
 	while( i < 4 )
@@ -202,7 +202,7 @@ _GMatrix2x2	_GMatrix2x2::operator * ( float scalar ) const
 _GMatrix2x2	_GMatrix2x2::operator / ( float scalar) const
 {
 	_GMatrix2x2 mResult;
-	char i=0;
+	int i=0;
 	const float* data	= &this->_11;
 	float *pResult		= &mResult._11;
 	while( i < 4 )
@@ -319,7 +319,7 @@ const _GMatrix2x2& _GMatrix2x2::LinearInterpolate( const GMATRIX2X2 & a, const G
 	float *pT = &this->_11;
 	const float *pA = &a._11;
 	const float *pB = &b._11;
-	for (char i = 0; i < 4; i++) 
+	for (int i = 0; i < 4; i++) 
 	{
 		pT[i] = pA[i] * (1-prop) + pB[i] * prop;
 	}

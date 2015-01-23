@@ -72,8 +72,10 @@ error_t	god::pyTupleToArray( const char* in_tupleString, uint32_t nCharCount, GO
 	}
 
 	GOPTR(BUFFER) newArrayBuffer;
-	uint32_t nPrecalculatedElementCount = pyTupleElementCount( in_tupleString, nCharCount );
-	if( -1 == nPrecalculatedElementCount )
+	uint32_t nPrecalculatedElementCount;
+        
+	if(!pyTupleElementCount( in_tupleString, nCharCount,
+                                 &nPrecalculatedElementCount ))
 	{
 		error_printf("Invalid tuple size! Malformed input?");
 		return -1;
@@ -94,7 +96,7 @@ error_t	god::pyTupleToArray( const char* in_tupleString, uint32_t nCharCount, GO
 			&& in_tupleString[currentIndex] != ')' 
 			&& in_tupleString[currentIndex] != ',' )
 		{
-			currentNumber[currentNumberStop] = in_tupleString[currentIndex];
+			currentNumber[(int)currentNumberStop] = in_tupleString[currentIndex];
 			currentIndex++;
 			currentNumberStop++;
 		}
@@ -114,7 +116,8 @@ error_t	god::pyTupleToArray( const char* in_tupleString, uint32_t nCharCount, GO
 	return 0;
 };
 
-uint32_t god::pyTupleElementCount( const char* in_tupleString, uint32_t nCharCount )
+bool god::pyTupleElementCount( const char* in_tupleString, uint32_t nCharCount,
+                               uint32_t *result )
 {
 	uint32_t startIndex = 0;
 	while( startIndex < nCharCount 
@@ -125,7 +128,7 @@ uint32_t god::pyTupleElementCount( const char* in_tupleString, uint32_t nCharCou
 	if( startIndex == nCharCount || !in_tupleString[startIndex] )
 	{
 		error_printf("Invalid tuple syntax! Missing opening '('.");
-		return -1;
+		return 0;
 	}
 	uint32_t endIndex = startIndex;
 	while( endIndex < nCharCount 
@@ -136,7 +139,7 @@ uint32_t god::pyTupleElementCount( const char* in_tupleString, uint32_t nCharCou
 	if( endIndex == nCharCount || !in_tupleString[endIndex] )
 	{
 		error_printf("Invalid tuple syntax! Missing closing ')'.");
-		return -1;
+		return 0;
 	}
 
 	uint32_t currentIndex = startIndex+1;
@@ -154,5 +157,6 @@ uint32_t god::pyTupleElementCount( const char* in_tupleString, uint32_t nCharCou
 		if( currentNumberStop )
 			totalElementCount++;
 	};
-	return totalElementCount;
+	*result = totalElementCount;
+        return 1;
 };

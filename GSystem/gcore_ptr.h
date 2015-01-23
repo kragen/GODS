@@ -281,8 +281,8 @@ namespace god
 
 	private:
 		gcore_ptr<_T>		m_History;	// history doesn't call update handlers.
-		void				(*onUpdate)( genius_ptr<_T>* instance );
 		void				(*onCreate)( genius_ptr<_T>* instance );
+		void				(*onUpdate)( genius_ptr<_T>* instance );
 		void				(*onFree)( genius_ptr<_T>* instance );
 	};
 
